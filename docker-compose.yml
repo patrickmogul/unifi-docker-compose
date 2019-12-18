@@ -6,8 +6,6 @@ services:
     networks:
       - unifi
     restart: always
-    ports:
-      - 27017:27017
     volumes:
       - db:/data/db
   controller:
