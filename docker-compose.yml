@@ -3,6 +3,9 @@ services:
   mongo:
     image: mongo:3.4-xenial
     container_name: mongo
+    ports:
+      - 27017:27017
+      - 27018:27018
     networks:
       - unifi
     restart: always
