@@ -3,14 +3,11 @@ services:
   mongo:
     image: mongo:3.4-xenial
     container_name: mongo
-    ports:
-      - 27017:27017
-      - 27018:27018
     networks:
       - unifi
-    restart: always
+    restart: unless-stopped
     volumes:
-      - db:/data/db
+      - mongodata:/data/db
   controller:
     image: "jacobalberty/unifi:${TAG:-latest}"
     container_name: controller
@@ -19,12 +16,12 @@ services:
     init: true
     networks:
       - unifi
-    restart: always
+    restart: unless-stopped
     volumes:
-      - data:/unifi/data
-      - log:/unifi/log
-      - cert:/unifi/cert
-      - init:/unifi/init.d
+      - ./data:/unifi/data
+      - ./log:/unifi/log
+      - ./cert:/unifi/cert
+      - ./init:/unifi/init.d
     environment:
       DB_URI: mongodb://mongo/unifi
       STATDB_URI: mongodb://mongo/unifi_stat
@@ -43,17 +40,12 @@ services:
     depends_on:
       - controller
     command: bash -c 'tail -F /unifi/log/*.log'
-    restart: always
+    restart: unless-stopped
     volumes:
-      - log:/unifi/log
-
-volumes:
-  db:
-  data:
-  log:
-  cert:
-  init:
+      - ./logs:/unifi/log
 
 networks:
   unifi:
     external: true
+volumes:
+  mongodata:

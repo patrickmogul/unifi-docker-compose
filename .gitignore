@@ -1,0 +1,7 @@
+**/logs/
+*.log
+**/data/
+**/log/
+**/cert/
+**/init/
+**/db/
