@@ -12,6 +12,13 @@ cd unifi-docker-compose
 docker-compose up -d
 ```
 
+### Upgrade
+```bash
+docker-compose pull
+docker-compose down
+docker-compose up -d
+```
+
 ### Features
 - Persistent storage in the docker-compose folder
 - MongoDB can't run with local storage on windows so it uses a volume
