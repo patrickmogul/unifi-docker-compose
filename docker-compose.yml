@@ -4,7 +4,7 @@ services:
     image: mongo:3.4-xenial
     container_name: mongo
     networks:
-      - unifi
+      - default
     restart: unless-stopped
     volumes:
       - mongodata:/data/db
@@ -15,7 +15,7 @@ services:
       - mongo
     init: true
     networks:
-      - unifi
+      - default
     restart: unless-stopped
     volumes:
       - ./data:/unifi/data
@@ -45,7 +45,6 @@ services:
       - ./logs:/unifi/log
 
 networks:
-  unifi:
-    external: true
+  default:
 volumes:
   mongodata:
