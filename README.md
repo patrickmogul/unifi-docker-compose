@@ -1,13 +1,18 @@
 # Unifi
 Docker Compose files to run a Unifi Controller based off of https://github.com/jacobalberty/unifi-docker images
 
-## requirements
+### Requirements
 - docker
 - docker-compose
 
-## Install
+### Install
 ```bash
-git clone https://github.com/easy-node-one/unifi-docker-compose-windows.git
-cd unifi-docker-compose-windows
+git clone https://github.com/easy-node-one/unifi-docker-compose.git
+cd unifi-docker-compose
 docker-compose up -d
 ```
+
+### Features
+- Persistent storage in the docker-compose folder
+- MongoDB can't run with local storage on windows so it uses a volume
+    - If you're on linux, set up the MongoDB volume locally for persistent DB
