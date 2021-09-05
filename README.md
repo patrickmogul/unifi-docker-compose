@@ -1,4 +1,4 @@
-# Unifi
+# Unifi Controller via Docker Compose
 Docker Compose files to run a Unifi Controller based off of https://github.com/jacobalberty/unifi-docker images
 
 ### Requirements
