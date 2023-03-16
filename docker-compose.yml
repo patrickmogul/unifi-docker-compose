@@ -32,7 +32,6 @@ services:
       - "8080:8080/tcp" # Device/ controller comm.
       - "8443:8443/tcp" # Controller GUI/API as seen in a web browser
       - "8880:8880/tcp" # HTTP portal redirection
-      - "8843:8843/tcp" # HTTPS portal redirection
       - "10001:10001/udp" # AP discovery
   logs:
     image: bash
@@ -42,7 +41,7 @@ services:
     command: bash -c 'tail -F /unifi/log/*.log'
     restart: unless-stopped
     volumes:
-      - ./logs:/unifi/log
+      - ./log:/unifi/log
 
 networks:
   default:
